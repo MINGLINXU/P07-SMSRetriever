@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class FragmentSecond extends Fragment {
     Button btnRetrieve;
-    EditText etContent;
+    EditText etContent, etContent2;
     TextView tvSms;
 
     @Override
@@ -27,6 +27,7 @@ public class FragmentSecond extends Fragment {
         View view = inflater.inflate(R.layout.fragment_second, container,false);
         btnRetrieve = view.findViewById(R.id.btn_Retrieve);
         etContent = view.findViewById(R.id.editTextContet);
+        etContent2 = view.findViewById(R.id.etContent2);
         tvSms = view.findViewById(R.id.tvSMS);
 
         btnRetrieve.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +41,7 @@ public class FragmentSecond extends Fragment {
                 ContentResolver cr = getActivity().getContentResolver();
                 String filter = "body LIKE ? ";
                 String keyword = etContent.getText().toString();
+                String keyword2 = etContent2.getText().toString();
                 String[] filterArgs = {"%" + keyword + "%"};
                 // Fetch SMS Message from Built-in Content Provider
                 Cursor cursor = cr.query(uri, reqCols, filter, filterArgs, null);
